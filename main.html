@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NETpath Labs – Learn networking by building it</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#f6f8fb;--fg:#0b1220;--mut:#5a6578;--card:#fff;--line:#dfe5ee;--acc:#0a84ff;--acc2:#12c2a0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070b14;--fg:#e8eefc;--mut:#8b97b0;--card:#0e1524;--line:#1c2740}}
+:root[data-theme="dark"]{--bg:#070b14;--fg:#e8eefc;--mut:#8b97b0;--card:#0e1524;--line:#1c2740}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-block}
+.logo b{color:var(--acc)}
+.links{display:flex;gap:6px;align-items:center;font-family:ui-monospace,Menlo,monospace;font-size:14px;color:var(--mut)}
+.links a:hover{color:var(--acc)}.links span{opacity:.4}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;background:var(--acc);color:#fff;font-weight:600;border:0;cursor:pointer;font-size:15px}
+.btn.o{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:60px 5vw;position:relative;overflow:hidden;
+background-image:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--acc) 18%,transparent),transparent 60%),linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:100% 100%,48px 48px,48px 48px}
+.hero h1{font-size:clamp(2.6rem,8vw,5.5rem);letter-spacing:-.04em;line-height:1.05}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);margin:18px auto 30px;max-width:560px;font-size:1.15rem}
+.tag{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--acc);margin-bottom:14px;display:block}
+.term{margin:36px auto 0;max-width:460px;text-align:left;background:#0b1220;color:#9fe8d6;border-radius:12px;padding:16px 18px;font:13px/1.7 ui-monospace,Menlo,monospace;border:1px solid var(--line)}
+.term span{color:#6f7d99}
+section{padding:80px 5vw;max-width:1100px;margin:auto}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;margin-bottom:10px}
+.sub{color:var(--mut);max-width:620px;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:var(--acc)}
+.card h3{font-size:1.1rem;margin:8px 0 6px}.card p{color:var(--mut);font-size:.95rem}
+.ic{font-size:1.5rem}
+.step{counter-increment:s}.step:before{content:"0" counter(s);font-family:ui-monospace,monospace;color:var(--acc);font-size:13px}
+.steps{counter-reset:s}
+.pill{display:inline-block;font:12px ui-monospace,monospace;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--mut);margin:12px 6px 0 0}
+.lvl-b{color:var(--acc2)}.lvl-i{color:var(--acc)}.lvl-a{color:#f5a524}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}th{font:12px ui-monospace,monospace;color:var(--mut);text-transform:uppercase}
+.wrap{overflow-x:auto}
+.mission{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:48px 5vw;text-align:center}
+.mission p{font-size:clamp(1.2rem,2.6vw,1.7rem);letter-spacing:-.02em;max-width:760px;margin:auto}
+form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+input{padding:12px 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-width:240px;font-size:15px}
+footer{text-align:center;padding:40px 5vw;color:var(--mut);border-top:1px solid var(--line);font-size:14px}
+@media(max-width:640px){.links .h{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="logo"><i></i>NET<b>path</b> Labs</a>
+  <div class="links"><a class="h" href="#home">home</a><span class="h">/</span><a class="h" href="#labs">labs</a><span class="h">/</span><a href="#projects">projects</a><span>/</span><a href="#leaderboard">leaderboard</a><span>/</span><a href="#community" class="btn" style="padding:8px 18px;font-size:13px;margin-left:6px">sign up</a></div>
+</nav>
+
+<header class="hero" id="home">
+  <div>
+    <span class="tag">// netpath labs</span>
+    <h1>What should I<br><em>configure?</em></h1>
+    <p>Hands-on labs, real-world projects and mentorship for aspiring network engineers. Building, testing and learning one network at a time.</p>
+    <a class="btn" href="#projects">Explore Projects</a> <a class="btn o" href="#community">Join the Community</a>
+    <div class="term"><span>R1#</span> show ip ospf neighbor<br>Neighbor ID &nbsp;State &nbsp;&nbsp;&nbsp;Interface<br>2.2.2.2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FULL/DR &nbsp;Gi0/1<br><span>R1#</span> _ <span># now break it and fix it.</span></div>
+  </div>
+</header>
+
+<section id="labs">
+  <h2>Theory is the start. Practice is the job.</h2>
+  <p class="sub">Becoming a network engineer takes more than certifications: practice, problem-solving, experimentation and the confidence to troubleshoot real scenarios.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🖧</div><h3>Hands-on Labs</h3><p>Learn through device configuration and practical exercises.</p></div>
+    <div class="card"><div class="ic">🗺️</div><h3>Real-World Projects</h3><p>Design, build and document networks that demonstrate your ability.</p></div>
+    <div class="card"><div class="ic">🛠️</div><h3>Troubleshooting</h3><p>Build systematic problem-solving with realistic network faults.</p></div>
+    <div class="card"><div class="ic">🐍</div><h3>Network Automation</h3><p>Explore Python and tools that make network operations more efficient.</p></div>
+    <div class="card"><div class="ic">🤝</div><h3>Community &amp; Mentorship</h3><p>Connect with aspiring engineers and learn together.</p></div>
+  </div>
+</section>
+
+<section id="community">
+  <h2>Join the Community</h2>
+  <p class="sub">Three steps from idea to portfolio piece.</p>
+  <div class="grid steps">
+    <div class="card step"><h3>Select a project</h3><p>Browse curated, beginner-friendly networking projects that build skills step by step.</p></div>
+    <div class="card step"><h3>Submit your project</h3><p>Finished a build? Upload your topology, configs and documentation to showcase your work.</p></div>
+    <div class="card step"><h3>Get feedback</h3><p>Learn from other engineers, review solutions and get mentor input.</p></div>
+  </div>
+  <form onsubmit="event.preventDefault();this.innerHTML='<p class=sub>You are on the list. Welcome to NETpath Labs!</p>'"><input type="email" required placeholder="you@email.com" aria-label="Email"><button class="btn">Join the waitlist</button></form>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="sub">Pick a build. Document it. Share it.</p>
+  <div class="grid">
+    <div class="card"><b class="lvl-b">Beginner</b><h3>Small Office LAN</h3><p>VLANs, trunks, inter-VLAN routing and DHCP for a 3-department office.</p><span class="pill">VLAN</span><span class="pill">Routing</span></div>
+    <div class="card"><b class="lvl-i">Intermediate</b><h3>Multi-Site OSPF WAN</h3><p>Connect three branches with OSPF, summarisation and redundancy.</p><span class="pill">OSPF</span><span class="pill">WAN</span></div>
+    <div class="card"><b class="lvl-i">Intermediate</b><h3>Broken Network Challenge</h3><p>A network with five hidden faults. Find and fix them methodically.</p><span class="pill">Troubleshooting</span></div>
+    <div class="card"><b class="lvl-a">Advanced</b><h3>Automate Config Backups</h3><p>Use Python and Netmiko to back up and audit device configs.</p><span class="pill">Python</span><span class="pill">Netmiko</span></div>
+  </div>
+</section>
+
+<section id="leaderboard">
+  <h2>Leaderboard</h2>
+  <p class="sub">Top contributors this month (sample data).</p>
+  <div class="wrap"><table>
+    <tr><th>#</th><th>Engineer</th><th>Projects</th><th>Labs</th></tr>
+    <tr><td>1</td><td>@packet_pilot</td><td>7</td><td>42</td></tr>
+    <tr><td>2</td><td>@vlan_vince</td><td>5</td><td>36</td></tr>
+    <tr><td>3</td><td>@subnet_sara</td><td>4</td><td>31</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <div class="mission"><span class="tag">// our mission</span><p>To help aspiring network engineers turn knowledge into practical skills, build meaningful portfolios and take confident steps towards their careers in IT.</p></div>
+</section>
+
+<footer>Website made with ♡ by NETpath Labs · © 2026</footer>
+</body>
+</html>
